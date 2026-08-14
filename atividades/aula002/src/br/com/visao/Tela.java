@@ -35,10 +35,18 @@ public class Tela extends javax.swing.JFrame {
         jBcomprar = new javax.swing.JButton();
         jLsdesconto = new javax.swing.JLabel();
         jLcdesconto = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Compras");
 
         jLabel1.setText("Digite o valor da compra:");
+
+        jTvalor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTvalorActionPerformed(evt);
+            }
+        });
 
         jBcomprar.setText("Comprar");
         jBcomprar.addActionListener(new java.awt.event.ActionListener() {
@@ -47,9 +55,11 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jLsdesconto.setText("0.00");
+        jLsdesconto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLsdesconto.setText("Valor da compra sem desconto:");
 
-        jLcdesconto.setText("0.00");
+        jLcdesconto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLcdesconto.setText("Valor da compra com desconto de 10% (>=500):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,33 +68,36 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jBcomprar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLsdesconto)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLcdesconto))))
-                .addContainerGap(179, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLsdesconto)
+                            .addComponent(jLcdesconto)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jBcomprar)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLsdesconto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLcdesconto)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -93,7 +106,18 @@ public class Tela extends javax.swing.JFrame {
     private void jBcomprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcomprarActionPerformed
         // TODO add your handling code here:
         Compra obj1 = new Compra();
+        obj1.setValor(Double.valueOf(jTvalor.getText()));
+        jLsdesconto.setText("Valor da compra sem desconto: "+obj1.getValor());
+        if(obj1.getValor() >= 500){
+            jLcdesconto.setText("Valor da compra com desconto de 10% (>=500): "+obj1.getDesconto());
+        } else{
+            jLcdesconto.setText("Valor da compra com desconto de 10% (>=500): ");
+        }
     }//GEN-LAST:event_jBcomprarActionPerformed
+
+    private void jTvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTvalorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTvalorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +149,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLcdesconto;
     private javax.swing.JLabel jLsdesconto;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTvalor;
     // End of variables declaration//GEN-END:variables
 }
