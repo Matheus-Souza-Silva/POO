@@ -10,14 +10,14 @@ import br.com.controle.Compra;
  *
  * @author matheussouza.silva
  */
-public class Tela extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Tela.class.getName());
+public class TelaCompra extends javax.swing.JFrame {
+    Compra v = new Compra(); // Deixa fora do botão faz ele ser um objeto global
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCompra.class.getName());
 
     /**
-     * Creates new form Tela
+     * Creates new form TelaCompra
      */
-    public Tela() {
+    public TelaCompra() {
         initComponents();
     }
 
@@ -32,9 +32,9 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTvalor = new javax.swing.JTextField();
-        jBcomprar = new javax.swing.JButton();
-        jLsdesconto = new javax.swing.JLabel();
-        jLcdesconto = new javax.swing.JLabel();
+        jBcompra = new javax.swing.JButton();
+        jLdesconto = new javax.swing.JLabel();
+        jLtotal = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,19 +48,18 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jBcomprar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jBcomprar.setText("Comprar");
-        jBcomprar.addActionListener(new java.awt.event.ActionListener() {
+        jBcompra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jBcompra.setText("Comprar");
+        jBcompra.setAlignmentY(0.0F);
+        jBcompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBcomprarActionPerformed(evt);
+                jBcompraActionPerformed(evt);
             }
         });
 
-        jLsdesconto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLsdesconto.setText("Valor da compra sem desconto:");
+        jLdesconto.setText(" ");
 
-        jLcdesconto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLcdesconto.setText("Valor da compra com desconto de 10% (>=500):");
+        jLtotal.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,56 +68,51 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(152, 152, 152)
+                        .addComponent(jBcompra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLdesconto)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLsdesconto)
-                            .addComponent(jLcdesconto)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                                .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLtotal)
+                            .addComponent(jSeparator1))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(11, 11, 11)
+                .addComponent(jBcompra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLsdesconto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLcdesconto)
-                .addGap(76, 76, 76))
+                .addComponent(jLdesconto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLtotal)
+                .addGap(82, 82, 82))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBcomprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcomprarActionPerformed
-        // TODO add your handling code here:
-        Compra obj1 = new Compra();
-        obj1.setValor(Double.valueOf(jTvalor.getText()));
-        jLsdesconto.setText("Valor da compra sem desconto: "+obj1.getValor());
-        if(obj1.getValor() >= 500){
-            jLcdesconto.setText("Valor da compra com desconto de 10% (>=500): "+obj1.getDesconto());
-        } else{
-            jLcdesconto.setText("Valor da compra com desconto de 10% (>=500): N/A");
-        }
-    }//GEN-LAST:event_jBcomprarActionPerformed
-
     private void jTvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTvalorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTvalorActionPerformed
+
+    private void jBcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcompraActionPerformed
+        // TODO add your handling code here:
+        v.setValor(Double.valueOf(jTvalor.getText()));
+        jLdesconto.setText("Valor com desconto "+v.calcularDesconto());
+        jLtotal.setText("Valor sem desconto "+v.getValor());
+    }//GEN-LAST:event_jBcompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,14 +136,14 @@ public class Tela extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Tela().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TelaCompra().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBcomprar;
+    private javax.swing.JButton jBcompra;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLcdesconto;
-    private javax.swing.JLabel jLsdesconto;
+    private javax.swing.JLabel jLdesconto;
+    private javax.swing.JLabel jLtotal;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTvalor;
     // End of variables declaration//GEN-END:variables
