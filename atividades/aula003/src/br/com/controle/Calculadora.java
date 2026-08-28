@@ -13,19 +13,19 @@ public class Calculadora {
     private int quantidade;
     
     public void adicionarValor(double valor){
-        soma += valor;
-        quantidade++;
+        this.soma += valor;
+        this.quantidade++;
     }
     
     public double calcularMedia(){
-        if(quantidade == 0){
+        if(this.quantidade <= 0){
             return 0;
         }
         
-        return soma / quantidade;
+        return this.soma / this.quantidade;
     }
 
     public int getQuantidade() {
-        return quantidade;
+        return this.quantidade;
     }
 }
